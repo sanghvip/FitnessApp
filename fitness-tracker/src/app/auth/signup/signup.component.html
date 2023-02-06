@@ -2,9 +2,10 @@
     custom date picker
     error and hits for invalid and empty input fields
     checbox
+    submit button disabled when the form inputs are invalid
  -->
 <section class="signup-form">
-    <form fxLayout="column" fxLayoutAlign="center center" #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" #f="ngForm" (ngSubmit)="onSubmit(f)">
         <mat-form-field style="width:20%">
             <mat-label>Your Email</mat-label>
             <input matInput type="email" ngModel name="email" email required #emailInput="ngModel">
@@ -19,13 +20,13 @@
         </mat-form-field>
         <mat-form-field style="width:20%">
             <mat-label>Your BirthDate</mat-label>
-            <input matInput placeholder="Your birthdate" [matDatepicker]="picker" [min]="minDate" ngModel name="birthDate">
+            <input matInput required placeholder="Your birthdate" [matDatepicker]="picker" [min]="minDate" ngModel name="birthDate">
             <mat-datepicker-toggle matSuffix [for]="picker" required></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
             <mat-checkbox ngModel name="agree" required color="primary">
                 Agree to Terms and Conditions.
             </mat-checkbox> 
-        <button type="submit" mat-raised-button color="primary">Submit</button>
+        <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">Submit</button>
     </form>
 </section>
