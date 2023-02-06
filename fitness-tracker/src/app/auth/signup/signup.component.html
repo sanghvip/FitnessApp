@@ -25,7 +25,8 @@
              name="password"
              required
              minlength="6"
-             #pwinput="ngModel">
+             #pwinput="ngModel"
+             [max]="maxDate">
              <mat-hint style="padding:0" align="end">{{ pwinput.value?.length}} / 6</mat-hint>
              <mat-error style="padding:0">Has to be atleast 6 charcters long.</mat-error>
         </mat-form-field>
