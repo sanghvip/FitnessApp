@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import moment from "moment";
-import { Moment } from 'moment';
+// import moment from "moment";
+// import { Moment } from 'moment';
 
 @Component({
   selector: 'app-signup',
@@ -9,11 +9,11 @@ import { Moment } from 'moment';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit{
-  maxDate: Moment;
+  minDate: Date;
 
   constructor(){
-    this.maxDate = moment().subtract(18,'year')
-    // this.maxDate.setFullYear(this.maxDate.getFullYear() - 18);
+    this.minDate = new Date();
+    this.minDate.setFullYear(this.minDate.getFullYear() - 18);
   }
 
   ngOnInit()
