@@ -8,26 +8,27 @@
                 </a>
             </mat-list-item>
             <mat-list-item>
-                <a routerLink="/login" (click)="sidenav.close()">
+                <a routerLink="/login" (click)="sidenav.toggle()">
                     <span class="nav-caption">
                         <mat-icon>input</mat-icon>Login</span>
                 </a>
             </mat-list-item>
             <mat-list-item>
-                <a routerLink="/training" (click)="sidenav.close()">
+                <a routerLink="/training" (click)="sidenav.toggle()">
                     <span class="nav-caption">
                         <mat-icon>fitness_center</mat-icon>Training</span>
                 </a>
             </mat-list-item>
             <mat-list-item>
-                <span class="nav-caption" (click)="sidenav.close()">
+                <span class="nav-caption" (click)="sidenav.toggle()">
                     <mat-icon>eject</mat-icon>Logout</span>
             </mat-list-item>
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
         <mat-toolbar color="primary">
-            <div fxHide.gt-xs><button mat-icon-button (click)="sidenav.toggle()">
+            <div fxHide.gt-xs>
+                <button mat-icon-button (click)="sidenav.toggle()">
                     <mat-icon>menu</mat-icon>
                 </button>
             </div>
