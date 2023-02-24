@@ -11,10 +11,14 @@ a {
     color: white;
 }
 
-/* a:hover, a:active{
+mat-nav-list a {
+    color:black;
+}
+
+a:hover, a:active{
     color:lightgray;
-    Existing issue for hover effects not working on mat-list-item - https://github.com/angular/material/issues/9247
-} */
+    /* Existing issue for hover effects not working on mat-list-item - https://github.com/angular/material/issues/9247 */
+}
 
 .navigation-items {
     list-style: none;
@@ -22,6 +26,6 @@ a {
     margin:0;
 }
 .nav-caption{
-    display: inline-block;
+    display: flex;
     padding-left: 6px;
 }
