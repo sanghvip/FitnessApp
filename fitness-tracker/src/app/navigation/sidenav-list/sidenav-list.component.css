@@ -7,11 +7,7 @@ a:hover, a:active{
     /* Existing issue for hover effects not working on mat-list-item - https://github.com/angular/material/issues/9247 */
 }
 
-.navigation-items {
-    list-style: none;
-    padding: 0;
-    margin:0;
-}
+
 .nav-caption{
     display: flex;
     padding-left: 6px;
