@@ -17,4 +17,8 @@ export class AuthService {
             userId: Math.round(Math.random()*10000).toString()
         };
     }
+
+    logout(){
+        this.user = null;
+    }
 }
