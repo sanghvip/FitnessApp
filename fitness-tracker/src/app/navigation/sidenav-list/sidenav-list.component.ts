@@ -10,16 +10,23 @@ import { Subscription } from 'rxjs';
 export class SidenavListComponent {
 @Output() closeSidenav = new EventEmitter<void>();
 isAuth = false;
-
+authSubscription: Subscription;
 constructor(private authService:AuthService){
 
 }
 
-  onClose(){
-    this.closeSidenav.emit();
-    this.authService.authChange.subscribe(authStatus => {
+  ngOnInit(){
+    this.authSubscription = this.authService.authChange.subscribe(authStatus => {
       this.isAuth = authStatus;
     });
+  }
+
+  onClose(){
+    this.closeSidenav.emit();
+  }
+
+  onDestroy(){
+    this.authSubscription.unsubscribe();
   }
 
 }
