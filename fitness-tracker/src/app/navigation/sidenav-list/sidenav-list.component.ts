@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-sidenav-list',
@@ -7,10 +8,17 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class SidenavListComponent {
 @Output() closeSidenav = new EventEmitter<void>();
+isAuth = false;
+
+constructor(private authService:AuthService){
+
+}
 
   onClose(){
     this.closeSidenav.emit();
-
+    this.authService.authChange.subscribe(authStatus => {
+      this.isAuth = authStatus;
+    });
   }
 
 }
