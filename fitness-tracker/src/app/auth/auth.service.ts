@@ -2,7 +2,7 @@ import { AuthData } from './auth-data.model';
 import {User} from './user.model';
 
 export class AuthService {
-    private user: User;
+    private user: any;
 
     registerUser(authData: AuthData){
         this.user = {
