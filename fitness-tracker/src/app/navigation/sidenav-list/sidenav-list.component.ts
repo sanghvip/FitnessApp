@@ -21,6 +21,11 @@ constructor(private authService:AuthService){
     });
   }
 
+  onLogout(){
+    this.authService.logout();
+    this.onClose();
+  }
+
   onClose(){
     this.closeSidenav.emit();
   }
