@@ -19,7 +19,7 @@ export class AuthService {
     }
 
     logout(){
-        this.user = null;
+        this.user = null; 
     }
 
     getUser(){

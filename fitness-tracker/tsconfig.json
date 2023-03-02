@@ -23,7 +23,8 @@
       "ES2022",
       "dom"
     ],
-    "allowSyntheticDefaultImports":false
+    "allowSyntheticDefaultImports":false,
+    "strictPropertyInitialization": false,
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
