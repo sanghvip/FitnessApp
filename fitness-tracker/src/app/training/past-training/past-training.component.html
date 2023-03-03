@@ -1,5 +1,5 @@
 <mat-table [dataSource]="dataSource">
-    <!-- Date column -->
+<!-- Date column -->
 <ng-container matColumnDef="date">
     <mat-header-cell *matHeaderCellDef>Date</mat-header-cell>
     <mat-cell *matCellDef="let element">{{ element.date | date }}</mat-cell>
@@ -24,13 +24,11 @@
 </ng-container>
 
 <!--State-->
-<ng-container matColumnDef="duration">
+<ng-container matColumnDef="state">
     <mat-header-cell *matHeaderCellDef>State</mat-header-cell>
     <mat-cell *matCellDef="let element">{{ element.state }}</mat-cell>
-
-<mat-header-row *matHeaderRowDef="displyColumns"></mat-header-row>
-<mat-row *matRowDef="let row;column:displayColumns;"></mat-row>
 </ng-container>
 
-
+<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+<mat-row *matRowDef="let row;columns:displayedColumns;"></mat-row>
 </mat-table>
