@@ -18,14 +18,14 @@
 </ng-container>
 
 <!--Duration-->
-<ng-container matColumnDef="duration" mat-sort-header>
-    <mat-header-cell *matHeaderCellDef>Duration</mat-header-cell>
+<ng-container matColumnDef="duration" >
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Duration</mat-header-cell>
     <mat-cell *matCellDef="let element">{{ element.duration }}</mat-cell>
 </ng-container>
 
 <!--State-->
-<ng-container matColumnDef="state" mat-sort-header>
-    <mat-header-cell *matHeaderCellDef>State</mat-header-cell>
+<ng-container matColumnDef="state" >
+    <mat-header-cell *matHeaderCellDef mat-sort-header>State</mat-header-cell>
     <mat-cell *matCellDef="let element">{{ element.state }}</mat-cell>
 </ng-container>
 
