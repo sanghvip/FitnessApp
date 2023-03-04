@@ -16,6 +16,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule} from '@angular/material/dialog';
 import {MatTable, MatTableModule} from '@angular/material/table';
 import { MatSortModule } from "@angular/material/sort";
+import {MatPaginatorModule} from "@angular/material/paginator";
 /** 
  * Module file to manage the import from Angular material
  * */
@@ -36,7 +37,8 @@ import { MatSortModule } from "@angular/material/sort";
         MatProgressSpinnerModule,
         MatDialogModule,
     MatTableModule,
-MatSortModule],
+MatSortModule,
+MatPaginatorModule],
     exports: [MatButtonModule,
         MatIconModule,
         MatFormFieldModule,
@@ -53,7 +55,8 @@ MatSortModule],
         MatProgressSpinnerModule,
         MatDialogModule,
     MatTableModule,
-    MatSortModule]
+    MatSortModule,
+    MatPaginatorModule]
 })
 export class MaterialModule {
 
