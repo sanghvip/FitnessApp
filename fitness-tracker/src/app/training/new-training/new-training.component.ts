@@ -22,6 +22,6 @@ onStartTraining(form:NgForm){
 
 ngOnInit(): void {
   // this.exercises = this.trainingService.getAvailableExercises();
-  this.exercises = this.db.collection('availableExercises').valueChanges();
+  console.log(this.db.collection('availableExercises').valueChanges());
 }
 }
