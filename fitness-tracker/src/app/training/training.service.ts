@@ -19,9 +19,11 @@ export class TrainingService {
   }
 
   startExercise(selectedId: string) {
+    console.log("SelectedID of Exercise:"+selectedId);
     this.runningExercise = this.availableExercises.find(
-      ex => ex.id === selectedId
+      ex => ex.name === selectedId
     );
+    console.log("Exercise changed to:"+this.runningExercise);
     this.exerciseChanged.next({ ...this.runningExercise });
   }
 
@@ -52,6 +54,7 @@ export class TrainingService {
   }
 
   getCompletedOrCancelledExercises() {
-    return this.exercises.slice();
+    console.log("Completed exercises:"+this.exercises.slice());
+    return this.exercises.slice();    
   }
 }

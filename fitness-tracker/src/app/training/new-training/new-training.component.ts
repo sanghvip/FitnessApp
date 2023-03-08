@@ -23,9 +23,12 @@ export class NewTrainingComponent implements OnInit {
     this.exercises = this.db
       .collection('availableExercises')
       .valueChanges();
+      this.exercises.subscribe(result => console.log("Data from firebase:"+result));
+      // console.log("Exercise data:"+this.exercises);
   }
 
   onStartTraining(form: NgForm) {
+    console.log("Form value:"+form.value.exercise);
     this.trainingService.startExercise(form.value.exercise);
   }
 }
