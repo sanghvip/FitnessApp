@@ -7,6 +7,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 @Injectable()
 export class TrainingService {
   exerciseChanged = new Subject<any>();
+  exercisesChanged = new Subject<Exercise[]>();
   private availableExercises: Exercise[] = [
     // { id: 'crunches', name: 'Crunches', duration: 30, calories: 8 },
     // { id: 'touch-toes', name: 'Touch Toes', duration: 180, calories: 15 },
@@ -34,7 +35,9 @@ export class TrainingService {
       )
       .subscribe((exercises: Exercise[]) => {
         this.availableExercises = exercises;
-      })
+      });
+
+      this.exercisesChanged.next({...this.availableExercises});
   }
 
   startExercise(selectedId: string) {
