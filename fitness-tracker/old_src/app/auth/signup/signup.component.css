@@ -1,0 +1,7 @@
+mat-from-field{
+    width:800px;
+}
+
+.mat-mdc-form-field-hint-wrapper, .mat-mdc-form-field-error-wrapper {
+    padding:0;
+}
