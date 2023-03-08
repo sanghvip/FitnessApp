@@ -35,9 +35,10 @@ export class TrainingService {
       )
       .subscribe((exercises: Exercise[]) => {
         this.availableExercises = exercises;
+        this.exercisesChanged.next([...this.availableExercises]);
       });
 
-      this.exercisesChanged.next({...this.availableExercises});
+      
   }
 
   startExercise(selectedId: string) {

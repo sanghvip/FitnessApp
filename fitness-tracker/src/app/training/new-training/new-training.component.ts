@@ -20,7 +20,8 @@ export class NewTrainingComponent implements OnInit, OnDestroy {
     private trainingService: TrainingService) {}
 
   ngOnInit() {
-    this.trainingService.exercisesChanged.subscribe(exercises => this.exercises = exercises);
+    this.trainingService.exercisesChanged.subscribe(exercises => {
+      this.exercises = exercises});
     this.trainingService.fetchAvailableExercises();
     //  this.exercises = 
       // this.exercises.subscribe(result => console.log("Data from firebase:"+result));
