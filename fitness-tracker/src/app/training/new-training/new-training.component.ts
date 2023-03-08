@@ -21,19 +21,7 @@ export class NewTrainingComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-     this.exercises = this.db
-      .collection('availableExercises')
-      .snapshotChanges()
-      .pipe( 
-        map(docArray => {
-        return docArray.map(doc => {
-          return {
-          ...doc.payload.doc.data() as Exercise,
-          id: doc.payload.doc.id
-          };
-        });
-      })
-      );
+     this.exercises = 
       // this.exercises.subscribe(result => console.log("Data from firebase:"+result));
       // console.log("Exercise data:"+this.exercises);
   }
