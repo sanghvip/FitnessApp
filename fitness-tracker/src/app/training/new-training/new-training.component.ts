@@ -13,7 +13,7 @@ import { Exercise } from '../exercise.model';
   styleUrls: ['./new-training.component.css']
 })
 export class NewTrainingComponent implements OnInit {
-  exercises: Observable<any>;
+  exercises: Observable<Exercise[]>;
 
   constructor(
     private trainingService: TrainingService,
@@ -21,7 +21,7 @@ export class NewTrainingComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.exercises = this.db
+     this.exercises = this.db
       .collection('availableExercises')
       .snapshotChanges()
       .pipe( 
@@ -34,7 +34,6 @@ export class NewTrainingComponent implements OnInit {
         });
       })
       );
-      
       // this.exercises.subscribe(result => console.log("Data from firebase:"+result));
       // console.log("Exercise data:"+this.exercises);
   }
