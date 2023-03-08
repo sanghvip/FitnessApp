@@ -14,11 +14,10 @@ import { Exercise } from '../exercise.model';
 })
 export class NewTrainingComponent implements OnInit, OnDestroy {
   exercises: Exercise[];
+  exerciseSubscription: Subscription;
 
   constructor(
-    private trainingService: TrainingService,
-    private db: AngularFirestore
-  ) {}
+    private trainingService: TrainingService) {}
 
   ngOnInit() {
     this.trainingService.exercisesChanged.subscribe(exercises => this.exercises = exercises);
@@ -33,6 +32,6 @@ export class NewTrainingComponent implements OnInit, OnDestroy {
     this.trainingService.startExercise(form.value.exercise);
   }
   ngOnDestroy(): void {
-    
+    this.exerciseSubscription.unsubscribe();
   }
 }
