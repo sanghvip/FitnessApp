@@ -4,6 +4,7 @@ import { Subject } from 'rxjs';
 
 import { User } from './user.model';
 import { AuthData } from './auth-data.model';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Injectable()
 export class AuthService {
