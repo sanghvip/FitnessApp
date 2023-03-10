@@ -21,12 +21,19 @@ export class AuthService {
     })
     .catch(error => {
       console.log(error);
-    })
+    });
     
   }
 
   login(authData: AuthData) {
-    this.auth.signInWithEmailAndPassword(authData.email,authData.password);
+    this.auth.signInWithEmailAndPassword(authData.email,authData.password)
+    .then( result => {
+      console.log(result);
+      this.authSuccessfully();
+    })
+    .catch(error => {
+      console.log(error);
+    });
     this.authSuccessfully();
   }
 
