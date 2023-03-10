@@ -14,6 +14,7 @@ export class AuthService {
   constructor(private router: Router, private auth:AngularFireAuth) {}
 
   registerUser(authData: AuthData) {
+    this.auth.createUserWithEmailAndPassword(authData.email,authData.password);
     this.authSuccessfully();
   }
 
