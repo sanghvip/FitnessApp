@@ -11,13 +11,9 @@ export class AuthService {
   authChange = new Subject<boolean>();
   private user: User | null;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private auth:AngularFireAuth) {}
 
   registerUser(authData: AuthData) {
-    this.user = {
-      email: authData.email,
-      userId: Math.round(Math.random() * 10000).toString()
-    };
     this.authSuccessfully();
   }
 
