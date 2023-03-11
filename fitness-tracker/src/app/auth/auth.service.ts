@@ -35,7 +35,6 @@ export class AuthService {
     this.auth.createUserWithEmailAndPassword(authData.email,authData.password)
     .then( result => {
       console.log(result);
-      this.authSuccessfully();
     })
     .catch(error => {
       console.log(error);
@@ -47,22 +46,17 @@ export class AuthService {
     this.auth.signInWithEmailAndPassword(authData.email,authData.password)
     .then( result => {
       console.log(result);
-      this.authSuccessfully();
     })
     .catch(error => {
       console.log(error);
     });
-    this.authSuccessfully();
   }
 
   logout() {
-    
+   this.auth.signOut(); 
   }
 
   isAuth() {
     return this.isAuthenticated;
-  }
-
-  private authSuccessfully() {
   }
 }
