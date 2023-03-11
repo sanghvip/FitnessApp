@@ -83,9 +83,9 @@ export class TrainingService {
   }
 
   cancelSubscriptions(){
-
+    this.fbSubs.forEach(sub => sub.unsubscribe());
   }
-  
+
   private addDataToDatabase(exercise: Exercise){
     this.db.collection('finishedExercises').add(exercise);
 
