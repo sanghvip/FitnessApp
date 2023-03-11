@@ -16,7 +16,19 @@ export class AuthService {
   constructor(private router: Router, private auth:AngularFireAuth, private trainingService: TrainingService) {}
 
   initAuthListener(){
-    this.auth.authState.subscribe();
+    this.auth.authState.subscribe( user => {
+      if(user){
+        this.isAuthenticated = true;
+        this.authChange.next(true);
+        this.router.navigate(['/training']);
+      }
+      else {
+        this.trainingService.cancelSubscriptions();
+        this.authChange.next(false);
+        this.router.navigate(['/login']);
+        this.isAuthenticated = false;
+      }
+    });
   }
 
   registerUser(authData: AuthData) {
@@ -44,10 +56,7 @@ export class AuthService {
   }
 
   logout() {
-    this.trainingService.cancelSubscriptions();
-    this.authChange.next(false);
-    this.router.navigate(['/login']);
-    this.isAuthenticated=false;
+    
   }
 
   isAuth() {
@@ -55,8 +64,5 @@ export class AuthService {
   }
 
   private authSuccessfully() {
-    this.isAuthenticated=true;
-    this.authChange.next(true);
-    this.router.navigate(['/training']);
   }
 }
