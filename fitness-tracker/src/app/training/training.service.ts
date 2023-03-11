@@ -74,16 +74,18 @@ export class TrainingService {
   }
 
   fetchCompletedOrCancelledExercises() {
-    // console.log("Completed exercises:"+this.exercises.slice());
-    // return this.exercises.slice();    
-    this.db
+    this.fbSubs.push(this.db
     .collection('finishedExercises')
     .valueChanges()
     .subscribe((exercises) => {
       this.finishedExercisesChanged.next(exercises as Exercise[]);
-    });
+    }));
   }
 
+  cancelSubscriptions(){
+
+  }
+  
   private addDataToDatabase(exercise: Exercise){
     this.db.collection('finishedExercises').add(exercise);
 
