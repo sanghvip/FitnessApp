@@ -15,6 +15,10 @@ export class AuthService {
 
   constructor(private router: Router, private auth:AngularFireAuth, private trainingService: TrainingService) {}
 
+  initAuthListener(){
+    this.auth.authState.subscribe();
+  }
+
   registerUser(authData: AuthData) {
     this.auth.createUserWithEmailAndPassword(authData.email,authData.password)
     .then( result => {
