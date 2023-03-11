@@ -10,6 +10,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 export class AuthService {
   authChange = new Subject<boolean>();
   private user: User | null;
+  private isAuthenticated = false;
 
   constructor(private router: Router, private auth:AngularFireAuth) {}
 
@@ -38,20 +39,17 @@ export class AuthService {
   }
 
   logout() {
-    this.user = null;
     this.authChange.next(false);
     this.router.navigate(['/login']);
-  }
-
-  getUser() {
-    return { ...this.user };
+    this.isAuthenticated=false;
   }
 
   isAuth() {
-    return this.user != null;
+    return this.isAuthenticated;
   }
 
   private authSuccessfully() {
+    this.isAuthenticated=true;
     this.authChange.next(true);
     this.router.navigate(['/training']);
   }
