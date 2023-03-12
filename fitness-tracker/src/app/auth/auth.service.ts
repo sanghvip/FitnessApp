@@ -7,6 +7,7 @@ import { AuthData } from './auth-data.model';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { TrainingService } from '../training/training.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { UIService } from '../shared/ui.service';
 
 @Injectable()
 export class AuthService {
@@ -17,7 +18,8 @@ export class AuthService {
   constructor(private router: Router,
     private auth:AngularFireAuth,
     private trainingService: TrainingService,
-    private snackbar: MatSnackBar) {}
+    private snackbar: MatSnackBar,
+    private uiService: UIService) {}
 
   initAuthListener(){
     this.auth.authState.subscribe( user => {
