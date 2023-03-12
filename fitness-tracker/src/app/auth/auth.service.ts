@@ -38,11 +38,14 @@ export class AuthService {
   }
 
   registerUser(authData: AuthData) {
+    this.uiService.loadingChanged.next(true);
     this.auth.createUserWithEmailAndPassword(authData.email,authData.password)
     .then( result => {
       console.log(result);
+      this.uiService.loadingChanged.next(false);
     })
     .catch(error => {
+      this.uiService.loadingChanged.next(false);
       this.snackbar.open(error.message, "", 
         {duration: 3000});
     });
@@ -57,6 +60,7 @@ export class AuthService {
       this.uiService.loadingChanged.next(false);
     })
     .catch(error => {
+      this.uiService.loadingChanged.next(false);
       this.snackbar.open(error.message, "", 
         {duration: 3000});
     });
