@@ -6,6 +6,7 @@ import { User } from './user.model';
 import { AuthData } from './auth-data.model';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { TrainingService } from '../training/training.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable()
 export class AuthService {
@@ -13,7 +14,10 @@ export class AuthService {
   private user: User | null;
   private isAuthenticated = false;
 
-  constructor(private router: Router, private auth:AngularFireAuth, private trainingService: TrainingService) {}
+  constructor(private router: Router,
+    private auth:AngularFireAuth,
+    private trainingService: TrainingService,
+    private snackbar: MatSnackBar) {}
 
   initAuthListener(){
     this.auth.authState.subscribe( user => {
@@ -37,7 +41,7 @@ export class AuthService {
       console.log(result);
     })
     .catch(error => {
-      console.log(error);
+      this.snackbar.open('');
     });
     
   }
