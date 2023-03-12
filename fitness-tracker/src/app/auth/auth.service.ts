@@ -41,7 +41,8 @@ export class AuthService {
       console.log(result);
     })
     .catch(error => {
-      this.snackbar.open('');
+      this.snackbar.open(error.message, "", 
+        {duration: 3000});
     });
     
   }
@@ -52,7 +53,8 @@ export class AuthService {
       console.log(result);
     })
     .catch(error => {
-      console.log(error);
+      this.snackbar.open(error.message, "", 
+        {duration: 3000});
     });
   }
 
