@@ -50,9 +50,11 @@ export class AuthService {
   }
 
   login(authData: AuthData) {
+    this.uiService.loadingChanged.next(true);
     this.auth.signInWithEmailAndPassword(authData.email,authData.password)
     .then( result => {
       console.log(result);
+      this.uiService.loadingChanged.next(false);
     })
     .catch(error => {
       this.snackbar.open(error.message, "", 
