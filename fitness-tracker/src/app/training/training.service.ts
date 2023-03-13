@@ -41,6 +41,7 @@ export class TrainingService {
       error: (error) => {
         this.uiService.loadingChanged.next(false);
         this.uiService.showSnackBar("Error fetching exercises","",3000);
+        this.exercisesChanged.next([]);
       },
     }));
 
