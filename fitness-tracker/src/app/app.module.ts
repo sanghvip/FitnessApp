@@ -21,6 +21,7 @@ import { AuthService } from './auth/auth.service';
 import { TrainingService } from './training/training.service';
 import { environment } from '../environments/environment';
 import { UIService } from './shared/ui.service';
+import { AuthModule } from './auth/auth.module';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { UIService } from './shared/ui.service';
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AuthModule
   ],
   providers: [AuthService, TrainingService,UIService],
   bootstrap: [AppComponent],
