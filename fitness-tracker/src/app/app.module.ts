@@ -42,8 +42,6 @@ import { AuthModule } from './auth/auth.module';
     MaterialModule,
     AppRoutingModule,
     FlexLayoutModule,
-    FormsModule,
-    ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
