@@ -41,7 +41,6 @@ export class AuthService {
     this.uiService.loadingChanged.next(true);
     this.auth.createUserWithEmailAndPassword(authData.email,authData.password)
     .then( result => {
-      console.log(result);
       this.uiService.loadingChanged.next(false);
     })
     .catch(error => {
