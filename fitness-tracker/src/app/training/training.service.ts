@@ -25,6 +25,7 @@ export class TrainingService {
       .pipe( 
         map(docArray => {
         return docArray.map(doc => {
+          throw (new Error());
           return {
           ...doc.payload.doc.data() as Exercise,
           id: doc.payload.doc.id
@@ -32,13 +33,16 @@ export class TrainingService {
         });
       })
       )
-      .subscribe((exercises: Exercise[]) => {
+      .subscribe({
+        next: (exercises: Exercise[]) => {
         this.uiService.loadingChanged.next(false);
         this.availableExercises = exercises;
         this.exercisesChanged.next([...this.availableExercises]);
-      }), error => {
-        this.uiService.showSnackBar('Fetching exercises failed',"",3000);
-      });
+      },
+      error: (error) => {
+        this.uiService.showSnackBar("Error fetching exercises","",3000);
+      },
+    }));
 
       
   }
