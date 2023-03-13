@@ -25,7 +25,6 @@ export class TrainingService {
       .pipe( 
         map(docArray => {
         return docArray.map(doc => {
-          throw (new Error());
           return {
           ...doc.payload.doc.data() as Exercise,
           id: doc.payload.doc.id
@@ -40,6 +39,7 @@ export class TrainingService {
         this.exercisesChanged.next([...this.availableExercises]);
       },
       error: (error) => {
+        this.uiService.loadingChanged.next(false);
         this.uiService.showSnackBar("Error fetching exercises","",3000);
       },
     }));
