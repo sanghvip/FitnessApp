@@ -26,14 +26,9 @@ import { AuthModule } from './auth/auth.module';
 @NgModule({
   declarations: [
     AppComponent,
-    TrainingComponent,
-    CurrentTrainingComponent,
-    NewTrainingComponent,
-    PastTrainingsComponent,
     WelcomeComponent,
     HeaderComponent,
     SidenavListComponent,
-    StopTrainingComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +41,6 @@ import { AuthModule } from './auth/auth.module';
     AuthModule
   ],
   providers: [AuthService, TrainingService,UIService],
-  bootstrap: [AppComponent],
-  entryComponents: [StopTrainingComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
