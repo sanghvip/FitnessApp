@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 
 import { PastTrainingsComponent } from './past-trainings/past-trainings.component';
-import { MaterialModule } from '../material.module';
 import { CurrentTrainingComponent } from './current-training/current-training.component';
 import { StopTrainingComponent } from './current-training/stop-training.component';
 import { NewTrainingComponent } from './new-training/new-training.component';
