@@ -8,6 +8,7 @@ import { NewTrainingComponent } from './new-training/new-training.component';
 import { TrainingComponent } from './training.component';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
 declarations:[
@@ -18,10 +19,8 @@ PastTrainingsComponent,
 StopTrainingComponent
 ],
 imports:[
-    CommonModule,
+    SharedModule,
     AngularFirestoreModule,
-    MaterialModule,
-    FlexLayoutModule,
 ],
 entryComponents:[StopTrainingComponent]})
 
