@@ -16,7 +16,6 @@ import { TrainingService } from './training/training.service';
 import { environment } from '../environments/environment';
 import { UIService } from './shared/ui.service';
 import { AuthModule } from './auth/auth.module';
-import { TrainingModule } from './training/training.module';
 
 
 @NgModule({
@@ -34,7 +33,6 @@ import { TrainingModule } from './training/training.module';
     FlexLayoutModule,
     AngularFireModule.initializeApp(environment.firebase),
     AuthModule,
-    TrainingModule
   ],
   providers: [AuthService, TrainingService,UIService],
   bootstrap: [AppComponent]
