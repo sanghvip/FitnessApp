@@ -14,7 +14,6 @@ import * as fromRoot from '../../app.reducer';
 export class LoginComponent implements OnInit{
   loginForm: FormGroup;
   isLoading$: Observable<boolean>;
-  private loadingSubs: Subscription;
 
   constructor(private authService: AuthService,
     private uiService: UIService, 
