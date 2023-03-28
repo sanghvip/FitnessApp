@@ -1,4 +1,4 @@
-interface State {
+export interface State {
     isLoading:boolean;
 }
 
@@ -7,5 +7,16 @@ const initialState: State = {
 };
 
 export function appReducer(state = initialState,action){
-    return state;
+    switch(action.type){
+        case 'START_LOADING':
+            return {
+                isLoading : true
+            }
+        case 'STOP_LOADING':
+            return {
+                isLoading: false
+            }
+        default:
+            return state;
+    }
 }
