@@ -29,15 +29,10 @@ export class NewTrainingComponent implements OnInit {
   ngOnInit() {
     this.isLoading$ = this.store.select(fromRoot.getIsLoading);
     this.exercises$ = this.store.select(fromTraining.getAvailableTrainings);
-    this.exercises$.subscribe(data => console.log("Available trainings:"+data));
-    // this.exerciseSubscription = this.trainingService.exercisesChanged.subscribe(exercises => {
-    //   this.exercises = exercises;
-    // });
     this.fetchExercises();
   }
 
   onStartTraining(form: NgForm) {
-    console.log("Form value:"+form.value.exercise);
     this.trainingService.startExercise(form.value.exercise);
   }
   fetchExercises(){
