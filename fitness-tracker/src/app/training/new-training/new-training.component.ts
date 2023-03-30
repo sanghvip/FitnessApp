@@ -9,6 +9,7 @@ import { Exercise } from '../exercise.model';
 import { UIService } from 'src/app/shared/ui.service';
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../../app.reducer';
+import * as fromTraining from '../training.reducer';
 
 @Component({
   selector: 'app-new-training',
@@ -16,21 +17,22 @@ import * as fromRoot from '../../app.reducer';
   styleUrls: ['./new-training.component.css']
 })
 export class NewTrainingComponent implements OnInit {
-  exercises: Exercise[];
+  exercises$: Observable<Exercise[]>;
   private exerciseSubscription: Subscription;
   isLoading$: Observable<boolean>;
 
   constructor(
     private trainingService: TrainingService, 
     private uiService:UIService, 
-    private store: Store<fromRoot.State>) {}
+    private store: Store<fromTraining.state>) {}
 
   ngOnInit() {
     this.isLoading$ = this.store.select(fromRoot.getIsLoading);
-    
-    this.exerciseSubscription = this.trainingService.exercisesChanged.subscribe(exercises => {
-      this.exercises = exercises;
-    });
+    this.exercises$ = this.store.select(fromTraining.getAvailableTrainings);
+    this.exercises$.subscribe(data => console.log("Available trainings:"+data));
+    // this.exerciseSubscription = this.trainingService.exercisesChanged.subscribe(exercises => {
+    //   this.exercises = exercises;
+    // });
     this.fetchExercises();
   }
 
@@ -41,5 +43,4 @@ export class NewTrainingComponent implements OnInit {
   fetchExercises(){
     this.trainingService.fetchAvailableExercises();
   }
-  
 }
