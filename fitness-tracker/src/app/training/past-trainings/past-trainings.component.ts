@@ -5,7 +5,6 @@ import { MatPaginator } from '@angular/material/paginator';
 
 import { Exercise } from '../exercise.model';
 import { TrainingService } from '../training.service';
-import { Subscription } from 'rxjs';
 import  { Store} from '@ngrx/store';
 import * as fromTraining from '../training.reducer';
 @Component({
@@ -38,11 +37,4 @@ export class PastTrainingsComponent implements OnInit, AfterViewInit {
     var target = filterEvent.target as HTMLTextAreaElement;
     this.dataSource.filter = target!.value.trim().toLowerCase();
   }
-
-  // ngOnDestroy(): void {
-  //   if(this.exChangedSubscription){
-  //     this.exChangedSubscription.unsubscribe();
-  //   }
-    
-  // }
 }

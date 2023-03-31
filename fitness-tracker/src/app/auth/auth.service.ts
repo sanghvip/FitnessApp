@@ -14,21 +14,17 @@ import * as Auth from './auth.actions';
 
 @Injectable()
 export class AuthService {
-  private user: User | null;
-  private isAuthenticated = false;
+
 
   constructor(private router: Router,
     private auth:AngularFireAuth,
     private trainingService: TrainingService,
-    private snackbar: MatSnackBar,
     private uiService: UIService,
     private store:Store<fromRoot.State>) {}
 
   initAuthListener(){
     this.auth.authState.subscribe( user => {
       if(user){
-        // this.isAuthenticated = true;
-        // this.authChange.next(true);
         this.store.dispatch(new Auth.SetAuthenticated());
         this.router.navigate(['/training']);
       }
@@ -36,14 +32,11 @@ export class AuthService {
         this.trainingService.cancelSubscriptions();
         this.store.dispatch(new Auth.SetUnAuthenticated());
         this.router.navigate(['/login']);
-        // this.isAuthenticated = false;
       }
     });
   }
 
   registerUser(authData: AuthData) {
-    // this.uiService.loadingChanged.next(true);
-
     this.store.dispatch(new UI.StartLoading());
     this.auth.createUserWithEmailAndPassword(authData.email,authData.password)
     .then( result => {
@@ -57,16 +50,12 @@ export class AuthService {
   }
 
   login(authData: AuthData) {
-    // this.uiService.loadingChanged.next(true);
     this.store.dispatch(new UI.StartLoading());
     this.auth.signInWithEmailAndPassword(authData.email,authData.password)
     .then( result => {
-      // console.log(result);
-      // this.uiService.loadingChanged.next(false);
       this.store.dispatch(new UI.StopLoading());
     })
     .catch(error => {
-      // this.uiService.loadingChanged.next(false);
       this.store.dispatch(new UI.StopLoading());
       this.uiService.showSnackBar(error.message,"",3000);
     });

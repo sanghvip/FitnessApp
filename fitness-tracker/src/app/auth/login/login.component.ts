@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { UIService } from 'src/app/shared/ui.service';
 import { Observable, Subscription } from 'rxjs';
 import { AuthService } from '../auth.service';
 import { Store } from '@ngrx/store';
@@ -15,13 +14,11 @@ export class LoginComponent implements OnInit{
   loginForm: FormGroup;
   isLoading$: Observable<boolean>;
 
-  constructor(private authService: AuthService,
-    private uiService: UIService, 
+  constructor(private authService: AuthService, 
     private store:Store<fromRoot.State>) {}
 
   ngOnInit() {
     this.isLoading$ = this.store.select(fromRoot.getIsLoading);
-    this.store.subscribe(data => console.log(data));
     this.loginForm = new FormGroup({
       email: new FormControl('', {
         validators: [Validators.required, Validators.email]
@@ -36,11 +33,4 @@ export class LoginComponent implements OnInit{
       password: this.loginForm.value.password
     });
   }
-
-  // ngOnDestroy(): void {
-  //   if(this.loadingSubs){
-  //     this.loadingSubs.unsubscribe();
-  //   }
-    
-  // }
 }

@@ -16,8 +16,6 @@ export class TrainingService {
   exerciseChanged = new Subject<any>();
   exercisesChanged = new Subject<Exercise[]>();
   finishedExercisesChanged = new Subject<Exercise[]>();
-  private availableExercises: Exercise[] = [];
-  private runningExercise: any;
   private fbSubs: Subscription[] = [];
 
   constructor(private db: AngularFirestore,
@@ -26,7 +24,6 @@ export class TrainingService {
 
   fetchAvailableExercises() {
     this.store.dispatch(new UI.StartLoading());
-    // this.uiService.loadingChanged.next(true);
     this.fbSubs.push(this.db
       .collection('availableExercises')
       .snapshotChanges()
@@ -45,9 +42,6 @@ export class TrainingService {
         
         this.store.dispatch(new UI.StopLoading());
         this.store.dispatch(new Training.SetAvailableTrainings(exercises));
-        // this.availableExercises = exercises;
-        // this.exercisesChanged.next([...this.availableExercises]);
-
       },
       error: (error) => {        
         this.store.dispatch(new UI.StopLoading());
@@ -86,20 +80,7 @@ export class TrainingService {
       });
       this.store.dispatch(new Training.StopTraining());
     });
-
-    // this.addDataToDatabase({
-    //   ...this.runningExercise,
-    //   duration: this.runningExercise.duration * (progress / 100),
-    //   calories: this.runningExercise.calories * (progress / 100),
-    //   date: new Date(),
-    //   state: 'cancelled'
-    // });
-    // this.store.dispatch(new Training.StopTraining());
   }
-
-  // getRunningExercise() {
-  //   return { ...this.runningExercise };
-  // }
 
   fetchCompletedOrCancelledExercises() {
     this.fbSubs.push(this.db

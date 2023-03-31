@@ -18,12 +18,10 @@ import * as fromTraining from '../training.reducer';
 })
 export class NewTrainingComponent implements OnInit {
   exercises$: Observable<Exercise[]>;
-  private exerciseSubscription: Subscription;
   isLoading$: Observable<boolean>;
 
   constructor(
     private trainingService: TrainingService, 
-    private uiService:UIService, 
     private store: Store<fromTraining.state>) {}
 
   ngOnInit() {

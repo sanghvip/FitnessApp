@@ -11,28 +11,11 @@ import * as fromTraining from './training.reducer';
 })
 export class TrainingComponent implements OnInit {
   ongoingTraining$:Observable<boolean>;
-  // exerciseSubscription: Subscription;
 
 
   constructor(private trainingService: TrainingService,private store:Store<fromTraining.state>) {}
 
   ngOnInit() {
     this.ongoingTraining$ = this.store.select(fromTraining.getIsTraining);
-    // this.exerciseSubscription = this.trainingService.exerciseChanged.subscribe(
-    //   exercise => {
-    //     if (exercise) {
-    //       this.ongoingTraining = true;
-    //     } else {
-    //       this.ongoingTraining = false;
-    //     }
-    //   }
-    // );
-
   }
-
-  // ngOnDestroy(): void {
-  //   if(this.exerciseSubscription){
-  //     this.exerciseSubscription.unsubscribe();
-  //   }
-  // }
 }

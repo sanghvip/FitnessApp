@@ -22,12 +22,6 @@ export class SidenavListComponent implements OnInit, OnDestroy {
 
   constructor(private authService: AuthService, private store:Store<fromRoot.State>) {}
 
-  // ngOnInit() {
-  //   this.authSubscription = this.authService.authChange.subscribe(authStatus => {
-  //     this.isAuth = authStatus;
-  //   });
-  // }
-
   ngOnInit(): void {
     this.isAuth$ = this.store.select(fromRoot.getIsAuth);
   }
